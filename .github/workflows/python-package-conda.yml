@@ -15,9 +15,16 @@ jobs:
       with:
         auto-update-conda: true
         python-version: '3.10'
-        environment-file: environment.yml
         activate-environment: myenv
         channel-priority: strict
+        
+    - name: Install dependencies
+      shell: bash -el {0}
+      run: |
+        # Install your project dependencies here
+        conda install -c conda-forge numpy pandas scipy -y
+        # Or if you have requirements.txt:
+        # pip install -r requirements.txt
         
     - name: Display Conda environment info
       shell: bash -el {0}
